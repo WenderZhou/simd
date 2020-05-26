@@ -1,1 +1,1 @@
-ffplay -f rawvideo -video_size 1920x1080 output.yuv
+ffplay -f rawvideo -video_size 1920x1080 result.yuv

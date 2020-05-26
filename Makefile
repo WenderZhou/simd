@@ -3,9 +3,9 @@ CFLAGS = -Wall
 CC = g++
 LD = g++
 
-SIM_C = main.cc pic.cc
+SIM_C = main.cc pic.cc solution.cc
 
-SIM_O = main.o pic.o
+SIM_O = main.o pic.o solution.o
 
 PROGRAM = main
 
