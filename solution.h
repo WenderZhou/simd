@@ -7,23 +7,30 @@
 class Solution
 {
 public:
-    virtual void AlphaBlend(const RGB& src, YUV& dst, int alpha) = 0;
+    virtual void YUV2RGB(const YUV& yuv, RGB& rgb) = 0;
+    virtual void AlphaBlend(const RGB& src, RGB& dst, int alpha) = 0;
+    virtual void RGB2YUV(const RGB& rgb, YUV& yuv) = 0;
+    virtual void Transform(const YUV& src, YUV& dst, int alpha);
 };
 
 
 class Basic : public Solution
 {
 public:
-    void AlphaBlend(const RGB& src, YUV& dst, int alpha) override;
+    void YUV2RGB(const YUV& yuv, RGB& rgb) override;
+    void AlphaBlend(const RGB& src, RGB& dst, int alpha) override;
+    void RGB2YUV(const RGB& rgb, YUV& yuv) override;
 };
 
 
 class MMX : public Solution
 {
 public:
-    void AlphaBlend(const RGB& src, YUV& dst, int alpha) override;
+    void YUV2RGB(const YUV& yuv, RGB& rgb) override;
+    void AlphaBlend(const RGB& src, RGB& dst, int alpha) override;
+    void RGB2YUV(const RGB& rgb, YUV& yuv) override;
 
-    inline __m64 constant(short c)
+    inline __m64 c(short c)
     {
         return _mm_set1_pi16(c);
     }
@@ -35,7 +42,7 @@ public:
 
     inline void unpack(__m64 x, uint8* dst)
     {
-        *(int*)dst = _m_to_int(_m_packuswb(x, (__m64)0LL));
+        *(int*)dst = _m_to_int(_m_packsswb(x, (__m64)0LL));
     }
 
     inline __m64 add(__m64 a, __m64 b)
