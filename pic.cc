@@ -3,15 +3,15 @@
 
 YUV::YUV()
 {
-    Y = new int*[HEIGHT];
-    U = new int*[HEIGHT];
-    V = new int*[HEIGHT];
+    Y = new uint8*[HEIGHT];
+    U = new uint8*[HEIGHT];
+    V = new uint8*[HEIGHT];
 
     for(int i = 0; i < HEIGHT; i++)
     {
-        Y[i] = new int[WIDTH];
-        U[i] = new int[WIDTH];
-        V[i] = new int[WIDTH];
+        Y[i] = new uint8[WIDTH];
+        U[i] = new uint8[WIDTH];
+        V[i] = new uint8[WIDTH];
     }
 }
 
@@ -91,26 +91,26 @@ int YUV::Store(char* filename)
     return 0;
 }
 
-static int clamp(int v)
+static uint8 clamp(int v)
 {
     if(v > 255)
         return 255;
     if(v < 0)
         return 0;
-    return v;
+    return (uint8)v;
 }
 
 RGB::RGB()
 {
-    R = new int*[HEIGHT];
-    G = new int*[HEIGHT];
-    B = new int*[HEIGHT];
+    R = new uint8*[HEIGHT];
+    G = new uint8*[HEIGHT];
+    B = new uint8*[HEIGHT];
 
     for(int i = 0; i < HEIGHT; i++)
     {
-        R[i] = new int[WIDTH];
-        G[i] = new int[WIDTH];
-        B[i] = new int[WIDTH];
+        R[i] = new uint8[WIDTH];
+        G[i] = new uint8[WIDTH];
+        B[i] = new uint8[WIDTH];
     }
 }
 

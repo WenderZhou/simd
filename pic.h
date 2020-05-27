@@ -6,6 +6,8 @@
 #define WIDTH 1920
 #define HEIGHT 1080
 
+typedef __uint8_t uint8;
+
 class YUV
 {
 public:
@@ -14,9 +16,9 @@ public:
     int Load(char* filename);
     int Store(char* filename);
 
-    int** Y;
-    int** U;
-    int** V;
+    uint8** Y;
+    uint8** U;
+    uint8** V;
 };
 
 class RGB
@@ -27,9 +29,9 @@ public:
     void YUV2RGB(const YUV& yuv);
     void RGB2YUV(YUV& yuv);
 
-    int** R;
-    int** G;
-    int** B;
+    uint8** R;
+    uint8** G;
+    uint8** B;
 };
 
 #endif
