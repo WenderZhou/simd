@@ -1,7 +1,5 @@
-CFLAGS = -Wall
-
 CC = g++
-LD = g++
+CFLAGS = -Wall -O3 -march=native
 
 SIM_C = main.cc pic.cc solution.cc
 
@@ -10,7 +8,7 @@ SIM_O = main.o pic.o solution.o
 PROGRAM = main
 
 $(PROGRAM):$(SIM_O)
-	$(LD) $^ -o $@
+	$(CC) $^ $(CFLAGS) -o $@
 
 $(SIM_O):$(SIM_C)
 	$(CC) $(CFLAGS) -c $^
